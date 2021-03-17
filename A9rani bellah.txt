@@ -1,0 +1,12 @@
+##################################
+#(0)A exécuter dans le terminal! #
+##################################
+
+1)py manage.py migrate
+2)py manage.py makemigrations monitoring
+3)py manage.py sqlmigrate monitoring 0001
+4)py manage.py migrate
+
+#######################################################################################################
+#(5)Installer les modules dans le fichier "requirements.txt" et utiliser un interpreteur python >= 3.8#
+#######################################################################################################

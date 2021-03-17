@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block page_title %}<title>Humidity Monitoring</title>{% endblock page_title %}
+
+{% block page_sidebar %}
+    <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li><a href="">Dashboard</a></li>
+            <li><a href="{% url 'index' %}">Monitoring</a></li>
+            <li><a href="{% url 'temperature' %}">&nbsp;&nbsp;&nbsp;&nbsp;Temperature</a></li>
+            <li class="active"><a href="{% url 'humidity' %}">&nbsp;&nbsp;&nbsp;&nbsp;Humidity <span class="sr-only">(current)</span></a>
+            </li>
+            <li><a href="#">Alerts</a></li>
+            <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;Email</a></li>
+            <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;SMS</a></li>
+            <li><a href="#">Data</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li><a href="{% url 'settings' %}">Settings</a></li>
+            <li><a href="/admin/">Admin</a></li>
+        </ul>
+    </div>
+{% endblock page_sidebar %}
+
+{% block page_content %}
+    <h2 align="center">Chart</h2>
+    <div id="console">
+        {% autoescape off %}
+            {{ plot_div }}
+        {% endautoescape %}
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="sub-header">Humidity Monitoring</h1>
+            <div class="table-responsive">
+                <table class="table table-striped" id="customers">
+                    <thead></thead>
+                    <tbody>
+                    <tr>
+                        <th>Humidity</th>
+                        {% for object in data %}
+                            <th>{{ object.value }}</th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>Time Stamp:</th>
+                        {% for object in data %}
+                            <td>{{ object.timestamp }}</td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock page_content %}
